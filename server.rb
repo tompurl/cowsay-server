@@ -62,9 +62,13 @@ module CowSay
         end
 
         def handle(connection)
-            # TODO Read is going to block until EOF. I need to use something
-            # different that will work without an EOF. 
-            request = connection.read
+            begin
+                request = connection.read_nonblock(4096)
+            rescue Errno::EAGAIN
+                puts "got here"
+                IO.select([connection])
+                retry
+            end
 
             commands = parse(request)
             if commands[:error_flag] then
