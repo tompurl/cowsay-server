@@ -3,5 +3,5 @@
 This is a small project that I'm using to learn more about socket programming.
 I'm also blogging about the experience here:
 
-- http://www.tompurl.com/2013-11-12-cowsay-server-part-one.html
+- http://www.tompurl.com/cowsay-server-series.html
 
